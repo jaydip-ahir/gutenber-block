@@ -20,9 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/card-repeater/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/card-repeater/editor.scss");
 
 /**
  * Retrieves the translation of text.
@@ -37,7 +35,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-
 
 
 
@@ -66,7 +63,7 @@ function Edit({
       card_heading: '',
       card_description: '',
       card_link: '',
-      card_linktext: '',
+      card_linktext: 'Button Text..',
       card_image: 'http://placehold.it/580',
       model: false
     }];
@@ -88,11 +85,93 @@ function Edit({
       items: updatedValues
     });
   };
+  const handleInputSetting = (value, section, fieldName) => {
+    const updatedSettings = {
+      ...attributes.settings,
+      [section]: {
+        ...attributes.settings[section],
+        [fieldName]: value
+      }
+    };
+    setAttributes({
+      settings: updatedSettings
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       className: "card-section"
     })
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Main Heading Settings', 'card-repeater')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Main Heading Font Size', 'card-repeater'),
+    value: attributes.settings.mainHeading.size,
+    onChange: size => handleInputSetting(size, 'mainHeading', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    value: attributes.settings.mainHeading.color,
+    onChange: color => handleInputSetting(color, 'mainHeading', 'color')
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Main Description Settings', 'card-repeater')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Main Description Font Size', 'card-repeater'),
+    value: attributes.settings.mainDescription.size,
+    onChange: size => handleInputSetting(size, 'mainDescription', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    value: attributes.settings.mainDescription.color,
+    onChange: color => handleInputSetting(color, 'mainDescription', 'color')
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Settings', 'card-repeater')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Heading Size', 'card-repeater'),
+    value: attributes.settings.cardHeading.size,
+    onChange: size => handleInputSetting(size, 'cardHeading', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Text Color', 'card-repeater'),
+    value: attributes.settings.cardHeading.color,
+    onChange: color => handleInputSetting(color, 'cardHeading', 'color')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Description Size', 'card-repeater'),
+    value: attributes.settings.cardDescription.size,
+    onChange: size => handleInputSetting(size, 'cardDescription', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Text Color', 'card-repeater'),
+    value: attributes.settings.cardDescription.color,
+    onChange: color => handleInputSetting(color, 'cardDescription', 'color')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Text Size', 'card-repeater'),
+    value: attributes.settings.cardButton.size,
+    onChange: size => handleInputSetting(size, 'cardButton', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Text Size', 'card-repeater'),
+    value: attributes.settings.cardButton.size,
+    onChange: size => handleInputSetting(size, 'cardButton', 'size'),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Text Color', 'card-repeater'),
+    value: attributes.settings.cardButton.color,
+    onChange: color => handleInputSetting(color, 'cardButton', 'color')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Button Color', 'card-repeater'),
+    value: attributes.settings.cardButton.background,
+    onChange: background => handleInputSetting(background, 'cardButton', 'background')
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "main-content"
@@ -105,7 +184,11 @@ function Edit({
         main_heading
       });
     },
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Section Heading...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Section Heading...'),
+    style: {
+      fontSize: attributes.settings.mainHeading.size,
+      color: attributes.settings.mainHeading.color
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "main-description",
@@ -115,7 +198,11 @@ function Edit({
         main_description
       });
     },
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Section Description...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Section Description...'),
+    style: {
+      fontSize: attributes.settings.mainDescription.size,
+      color: attributes.settings.mainDescription.color
+    }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "card-wrap"
   }, attributes.items?.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -148,17 +235,29 @@ function Edit({
     className: "card-heading",
     value: item.card_heading,
     onChange: event => headleInputFields(event, index, 'card_heading'),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Heading...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Heading...'),
+    style: {
+      fontSize: attributes.settings.cardHeading.size,
+      color: attributes.settings.cardHeading.color
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "card-description",
     value: item.card_description,
     onChange: event => headleInputFields(event, index, 'card_description'),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Description...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Card Description...'),
+    style: {
+      fontSize: attributes.settings.cardDescription.size,
+      color: attributes.settings.cardDescription.color
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "secondary",
-    onClick: () => headleInputFields(true, index, 'model')
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link Model')), item.model && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Modal, {
+    onClick: () => headleInputFields(true, index, 'model'),
+    style: {
+      background: attributes.settings.cardButton.background,
+      color: attributes.settings.cardButton.color
+    }
+  }, item.card_linktext), item.model && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Modal, {
     title: "Link Setting",
     onRequestClose: () => headleInputFields(false, index, 'model')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalInputControl, {
@@ -246,9 +345,35 @@ __webpack_require__.r(__webpack_exports__);
         card_heading: '',
         card_description: '',
         card_link: '',
-        card_linkLabel: '',
+        card_linktext: 'Button Text..',
         model: false
       }]
+    },
+    settings: {
+      type: 'object',
+      default: {
+        mainHeading: {
+          size: 45,
+          color: '#f1f1f1'
+        },
+        mainDescription: {
+          size: 18,
+          color: '#f1f1f1'
+        },
+        cardHeading: {
+          size: 40,
+          color: '#000'
+        },
+        cardDescription: {
+          size: 18,
+          color: '#000'
+        },
+        cardButton: {
+          size: 18,
+          color: '#fff',
+          background: '#a02424'
+        }
+      }
     }
   },
   /**
@@ -309,11 +434,19 @@ function save({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h2",
     className: "main-heading",
-    value: attributes.main_heading
+    value: attributes.main_heading,
+    style: {
+      fontSize: attributes.settings.mainHeading.size,
+      color: attributes.settings.mainHeading.color
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     className: "main-description",
-    value: attributes.main_description
+    value: attributes.main_description,
+    style: {
+      fontSize: attributes.settings.mainDescription.size,
+      color: attributes.settings.mainDescription.color
+    }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "card-wrap"
   }, attributes.items?.map(item => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -327,16 +460,28 @@ function save({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h2",
     className: "card-heading",
-    value: item.card_heading
+    value: item.card_heading,
+    style: {
+      fontSize: attributes.settings.cardHeading.size,
+      color: attributes.settings.cardHeading.color
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     className: "card-description",
-    value: item.card_description
+    value: item.card_description,
+    style: {
+      fontSize: attributes.settings.cardDescription.size,
+      color: attributes.settings.cardDescription.color
+    }
   }), item.card_linktext && item.card_link && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "cta"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: item.card_link,
-    className: "btn btn-link"
+    className: "btn btn-link",
+    style: {
+      background: attributes.settings.cardButton.background,
+      color: attributes.settings.cardButton.color
+    }
   }, item.card_linktext)))))))));
 }
 
@@ -403,16 +548,6 @@ module.exports = window["wp"]["blocks"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["components"];
-
-/***/ }),
-
-/***/ "@wordpress/element":
-/*!*********************************!*\
-  !*** external ["wp","element"] ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["element"];
 
 /***/ }),
 

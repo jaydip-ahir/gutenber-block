@@ -47,6 +47,34 @@ registerBlockType( metadata.name, {
 		buttonURL: {
 			type: 'string',
 			default: ''
+		},
+		headingFontSize: {
+			type: 'number',
+			default: 24
+		},
+		descriptionFontSize: {
+			type: 'number',
+			default: 16
+		},
+		buttonTextSize: {
+			type: 'number',
+			default: 18
+		},
+		headingColor: {
+			type: 'string',
+			default: '#000'
+		},
+		descriptionColor: {
+			type: 'string',
+			default: '#000'
+		},
+		buttonTextColor: {
+			type: 'string',
+			default: '#fff'
+		},
+		buttonColor: {
+			type: 'string',
+			default: '#e73671'
 		}
 	},
 	/**

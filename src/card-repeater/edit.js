@@ -11,9 +11,9 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps, RichText, MediaUpload } from '@wordpress/block-editor';
-import { Modal, Button, __experimentalInputControl as InputControl, __experimentalDivider as Divider } from '@wordpress/components'
-import { useState } from '@wordpress/element';
+import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, TextControl, RangeControl, ColorPalette, Modal, Button, __experimentalInputControl as InputControl, __experimentalDivider as Divider } from '@wordpress/components'
+
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -40,7 +40,7 @@ export default function Edit({attributes, setAttributes}) {
                 card_heading: '',
                 card_description: '',
                 card_link: '',
-                card_linktext: '',
+                card_linktext: 'Button Text..',
                 card_image: 'http://placehold.it/580',
                 model: false,
             },
@@ -60,9 +60,103 @@ export default function Edit({attributes, setAttributes}) {
 		setAttributes({ items: updatedValues })
 	}
 
+	
+	const handleInputSetting = (value, section, fieldName) => {
+        const updatedSettings = {
+            ...attributes.settings,
+            [section]: {
+                ...attributes.settings[section],
+                [fieldName]: value,
+            },
+        };
+        setAttributes({ settings: updatedSettings });
+    };
+
 	return (
 		<>
 			<div {...useBlockProps({ className: "card-section" })}>
+				<InspectorControls group="styles">
+					<PanelBody title={ __('Main Heading Settings', 'card-repeater') }>
+						<RangeControl
+							label={ __('Main Heading Font Size', 'card-repeater') }
+							value={ attributes.settings.mainHeading.size }
+							onChange={ ( size ) => handleInputSetting( size, 'mainHeading', 'size' ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+						<ColorPalette
+							value={ attributes.settings.mainHeading.color }
+							onChange={ ( color ) => handleInputSetting( color, 'mainHeading', 'color' ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
+				<InspectorControls group="styles">
+					<PanelBody title={ __('Main Description Settings', 'card-repeater') }>
+					<RangeControl
+						label={ __('Main Description Font Size', 'card-repeater') }
+						value={ attributes.settings.mainDescription.size }
+						onChange={ ( size ) => handleInputSetting( size, 'mainDescription', 'size' ) }
+						min={ 10 }
+						max={ 100 }
+					/>
+					<ColorPalette
+						value={ attributes.settings.mainDescription.color }
+						onChange={ ( color ) => handleInputSetting( color, 'mainDescription', 'color' ) }
+					/>
+					</PanelBody>
+				</InspectorControls>
+				<InspectorControls group="styles">
+					<PanelBody title={ __('Card Settings', 'card-repeater') }>
+						<RangeControl
+							label={ __('Card Heading Size', 'card-repeater') }
+							value={ attributes.settings.cardHeading.size }
+							onChange={ ( size ) => handleInputSetting( size, 'cardHeading', 'size' ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+						<ColorPalette
+							label={ __('Card Button Text Color', 'card-repeater') }
+							value={ attributes.settings.cardHeading.color }
+							onChange={ ( color ) => handleInputSetting( color, 'cardHeading', 'color' ) }
+						/>
+						<RangeControl
+							label={ __('Card Description Size', 'card-repeater') }
+							value={ attributes.settings.cardDescription.size }
+							onChange={ ( size ) => handleInputSetting( size, 'cardDescription', 'size' ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+						<ColorPalette
+							label={ __('Card Button Text Color', 'card-repeater') }
+							value={ attributes.settings.cardDescription.color }
+							onChange={ ( color ) => handleInputSetting( color, 'cardDescription', 'color' ) }
+						/>
+						<RangeControl
+							label={ __('Card Button Text Size', 'card-repeater') }
+							value={ attributes.settings.cardButton.size }
+							onChange={ ( size ) => handleInputSetting( size, 'cardButton', 'size' ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+						<RangeControl
+							label={ __('Card Button Text Size', 'card-repeater') }
+							value={ attributes.settings.cardButton.size }
+							onChange={ ( size ) => handleInputSetting( size, 'cardButton', 'size' ) }
+							min={ 10 }
+							max={ 100 }
+						/>
+						<ColorPalette
+							label={ __('Card Button Text Color', 'card-repeater') }
+							value={ attributes.settings.cardButton.color }
+							onChange={ ( color ) => handleInputSetting( color, 'cardButton', 'color' ) }
+						/>
+						<ColorPalette
+							label={ __('Card Button Color', 'card-repeater') }
+							value={ attributes.settings.cardButton.background }
+							onChange={ ( background ) => handleInputSetting( background, 'cardButton', 'background' ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
 				<div className='container'>
 					<div className='main-content'>
 						<RichText
@@ -73,6 +167,7 @@ export default function Edit({attributes, setAttributes}) {
 								setAttributes({ main_heading })
 							}}
 							placeholder={__('Section Heading...')}
+							style={{fontSize:attributes.settings.mainHeading.size, color: attributes.settings.mainHeading.color}}
 						/>
 						<RichText
 							tagName='p'
@@ -82,6 +177,7 @@ export default function Edit({attributes, setAttributes}) {
 								setAttributes({ main_description })
 							}}
 							placeholder={__('Section Description...')}
+							style={{fontSize:attributes.settings.mainDescription.size, color: attributes.settings.mainDescription.color}}
 						/>
 					</div>
 					<div className='card-wrap'>
@@ -105,6 +201,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={item.card_heading}
 										onChange={(event) => headleInputFields(event, index, 'card_heading')}
 										placeholder={__('Card Heading...')}
+										style={{fontSize:attributes.settings.cardHeading.size, color: attributes.settings.cardHeading.color}}
 									/>
 									<RichText
 										tagName='p'
@@ -112,9 +209,10 @@ export default function Edit({attributes, setAttributes}) {
 										value={item.card_description}
 										onChange={(event) => headleInputFields(event, index, 'card_description')}
 										placeholder={__('Card Description...')}
+										style={{fontSize:attributes.settings.cardDescription.size, color: attributes.settings.cardDescription.color}}
 									/>
-									<Button variant="secondary" onClick={() => headleInputFields(true, index, 'model')}>
-										{__('Link Model')}
+									<Button variant="secondary" onClick={() => headleInputFields(true, index, 'model')} style={{background: attributes.settings.cardButton.background, color: attributes.settings.cardButton.color}}>
+										{item.card_linktext}
 									</Button>
 									{item.model && (
 										<Modal title="Link Setting" onRequestClose={() => headleInputFields(false, index, 'model')}>

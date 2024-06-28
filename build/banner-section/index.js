@@ -65,12 +65,66 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
     group: "styles"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link Settings', 'banner-section')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading Settings', 'banner-section')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading Font Size', 'banner-section'),
+    value: attributes.headingFontSize,
+    onChange: headingFontSize => setAttributes({
+      headingFontSize
+    }),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    value: attributes.headingColor,
+    onChange: headingColor => setAttributes({
+      headingColor
+    })
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Description Settings', 'banner-section')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Description Font Size', 'banner-section'),
+    value: attributes.descriptionFontSize,
+    onChange: descriptionFontSize => setAttributes({
+      descriptionFontSize
+    }),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    value: attributes.descriptionColor,
+    onChange: descriptionColor => setAttributes({
+      descriptionColor
+    })
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "styles"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'banner-section')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Banner Button URL', 'banner-section'),
     value: attributes.buttonURL,
     onChange: buttonURL => setAttributes({
       buttonURL
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text Size', 'banner-section'),
+    value: attributes.buttonTextSize,
+    onChange: buttonTextSize => setAttributes({
+      buttonTextSize
+    }),
+    min: 10,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text Color', 'banner-section'),
+    value: attributes.buttonTextColor,
+    onChange: buttonTextColor => setAttributes({
+      buttonTextColor
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Color', 'banner-section'),
+    value: attributes.buttonColor,
+    onChange: buttonColor => setAttributes({
+      buttonColor
     })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
@@ -87,7 +141,11 @@ function Edit({
     onChange: banner_heading => setAttributes({
       banner_heading
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Banner Heading...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Banner Heading...'),
+    style: {
+      fontSize: attributes.headingFontSize,
+      color: attributes.headingColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     className: "text-black-100 text-base",
@@ -95,17 +153,29 @@ function Edit({
     onChange: banner_description => setAttributes({
       banner_description
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Banner Description...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Banner Description...'),
+    style: {
+      fontSize: attributes.descriptionFontSize,
+      color: attributes.descriptionColor
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pt-10 [&>a]:btn"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    style: {
+      backgroundColor: attributes.buttonColor
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     className: "richtext-border",
     value: attributes.buttonText,
     allowedFormats: [],
     onChange: buttonText => setAttributes({
       buttonText
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Button Text...')
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add Button Text...'),
+    style: {
+      fontSize: attributes.buttonTextSize,
+      color: attributes.buttonTextColor
+    }
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "w-6/12 px-4 lg:w-full"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -193,6 +263,34 @@ __webpack_require__.r(__webpack_exports__);
     buttonURL: {
       type: 'string',
       default: ''
+    },
+    headingFontSize: {
+      type: 'number',
+      default: 24
+    },
+    descriptionFontSize: {
+      type: 'number',
+      default: 16
+    },
+    buttonTextSize: {
+      type: 'number',
+      default: 18
+    },
+    headingColor: {
+      type: 'string',
+      default: '#000'
+    },
+    descriptionColor: {
+      type: 'string',
+      default: '#000'
+    },
+    buttonTextColor: {
+      type: 'string',
+      default: '#fff'
+    },
+    buttonColor: {
+      type: 'string',
+      default: '#e73671'
     }
   },
   /**

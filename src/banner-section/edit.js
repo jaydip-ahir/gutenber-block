@@ -12,7 +12,7 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl, Button } from '@wordpress/components';
+import { PanelBody, TextControl, RangeControl, ColorPalette } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -31,18 +31,66 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-
 	return (
 		<div { ...useBlockProps({ className: "ban_sec" }) }>
+					
 			<InspectorControls group="styles">
-                <PanelBody title={ __('Link Settings', 'banner-section') }>
-					<TextControl
-						label={ __('Banner Button URL', 'banner-section') }
-						value={ attributes.buttonURL }
-						onChange={ ( buttonURL ) => setAttributes({ buttonURL }) }
+				<PanelBody title={ __('Heading Settings', 'banner-section') }>
+					<RangeControl
+						label={ __('Heading Font Size', 'banner-section') }
+						value={ attributes.headingFontSize }
+						onChange={ ( headingFontSize ) => setAttributes({ headingFontSize }) }
+						min={ 10 }
+						max={ 100 }
 					/>
-                </PanelBody>
-            </InspectorControls>
+					<ColorPalette
+						value={ attributes.headingColor }
+						onChange={ ( headingColor ) => setAttributes({ headingColor }) }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<InspectorControls group="styles">
+				<PanelBody title={ __('Description Settings', 'banner-section') }>
+				<RangeControl
+					label={ __('Description Font Size', 'banner-section') }
+					value={ attributes.descriptionFontSize }
+					onChange={ ( descriptionFontSize ) => setAttributes({ descriptionFontSize }) }
+					min={ 10 }
+					max={ 100 }
+				/>
+				<ColorPalette
+					value={ attributes.descriptionColor }
+					onChange={ ( descriptionColor ) => setAttributes( {descriptionColor} ) }
+				/>
+				</PanelBody>
+			</InspectorControls>
+			<InspectorControls group="styles">
+				<PanelBody title={ __('Button Settings', 'banner-section') }>
+				<TextControl
+					label={ __('Banner Button URL', 'banner-section') }
+					value={ attributes.buttonURL }
+					onChange={ ( buttonURL ) => setAttributes({ buttonURL }) }
+				/>
+				<RangeControl
+					label={ __('Button Text Size', 'banner-section') }
+					value={ attributes.buttonTextSize }
+					onChange={ ( buttonTextSize ) => setAttributes({ buttonTextSize }) }
+					min={ 10 }
+					max={ 100 }
+				/>
+				<ColorPalette
+					label={ __('Button Text Color', 'banner-section') }
+					value={ attributes.buttonTextColor }
+					onChange={ ( buttonTextColor ) => setAttributes({ buttonTextColor }) }
+				/>
+				<ColorPalette
+					label={ __('Button Color', 'banner-section') }
+					value={ attributes.buttonColor }
+					onChange={ ( buttonColor ) => setAttributes({ buttonColor }) }
+				/>
+				</PanelBody>
+			</InspectorControls>
+					
 			<div className="container">
 				<div className="flex -mx-4 items-center lg:flex-col-reverse">
 					<div className="w-6/12 px-4 lg:w-full lg:pt-12">
@@ -53,22 +101,25 @@ export default function Edit({ attributes, setAttributes }) {
 								value={attributes.banner_heading}
 								onChange={(banner_heading) => setAttributes({ banner_heading })}
 								placeholder={__('Banner Heading...')}
-							/>
+								style={{fontSize:attributes.headingFontSize, color: attributes.headingColor}}
+								/>
 							<RichText
 								tagName="p"
 								className="text-black-100 text-base"
 								value={attributes.banner_description}
 								onChange={(banner_description) => setAttributes({ banner_description })}
 								placeholder={__('Banner Description...')}
-							/>
+								style={{fontSize:attributes.descriptionFontSize, color: attributes.descriptionColor}}
+								/>
 							<div className="pt-10 [&>a]:btn">
-								<button>
+								<button style={{backgroundColor: attributes.buttonColor}}>
 									<RichText
 										className='richtext-border'
 										value={attributes.buttonText}
 										allowedFormats={[]}
 										onChange={ ( buttonText) => setAttributes({ buttonText })}
 										placeholder={ __( 'Add Button Text...' ) }
+										style={{fontSize:attributes.buttonTextSize, color: attributes.buttonTextColor}}
 									/>
 								</button>
 							</div>

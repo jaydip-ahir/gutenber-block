@@ -44,10 +44,36 @@ registerBlockType( metadata.name, {
 					card_heading: '',
 					card_description: '',
 					card_link: '',
-					card_linkLabel: '',
+					card_linktext: 'Button Text..',
 					model: false
 				}
 			]
+		},
+		settings: {
+			type: 'object',
+			default: {
+				mainHeading: {
+					size: 45,
+					color: '#f1f1f1'
+				},
+				mainDescription: {
+					size: 18,
+					color: '#f1f1f1'
+				},
+				cardHeading: {
+					size: 40,
+					color: '#000'
+				},
+				cardDescription: {
+					size: 18,
+					color: '#000'
+				},
+				cardButton: {
+					size: 18,
+					color: '#fff',
+					background: '#a02424'
+				}
+			}
 		}
 	},
 	/**

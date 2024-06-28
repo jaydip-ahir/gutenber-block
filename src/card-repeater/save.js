@@ -26,11 +26,13 @@ export default function save({attributes}) {
 							tagName='h2'
 							className='main-heading'
 							value={attributes.main_heading}
+							style={{fontSize: attributes.settings.mainHeading.size, color: attributes.settings.mainHeading.color}}
 						/>
 						<RichText.Content
 							tagName='p'
 							className='main-description'
 							value={attributes.main_description}
+							style={{fontSize: attributes.settings.mainDescription.size, color: attributes.settings.mainDescription.color}}
 						/>
 					</div>
 					<div className='card-wrap'>
@@ -44,15 +46,17 @@ export default function save({attributes}) {
 										tagName='h2'
 										className='card-heading'
 										value={item.card_heading}
+										style={{fontSize: attributes.settings.cardHeading.size, color: attributes.settings.cardHeading.color}}
 									/>
 									<RichText.Content
 										tagName='p'
 										className='card-description'
 										value={item.card_description}
+										style={{fontSize: attributes.settings.cardDescription.size, color: attributes.settings.cardDescription.color}}
 									/>
 									{ item.card_linktext && item.card_link && (
 										<div className="cta">
-											<a href={item.card_link} className="btn btn-link">
+											<a href={item.card_link} className="btn btn-link" style={{background: attributes.settings.cardButton.background, color: attributes.settings.cardButton.color}}>
 												{item.card_linktext}
 											</a>
 										</div>

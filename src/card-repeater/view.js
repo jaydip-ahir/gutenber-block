@@ -21,5 +21,4 @@
  */
  
 /* eslint-disable no-console */
-console.log("Hello World! (from card-repeater-card-repeater block)");
 /* eslint-enable no-console */

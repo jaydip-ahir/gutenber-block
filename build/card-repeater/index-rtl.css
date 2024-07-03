@@ -7,5 +7,6 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-card-repeater-card-repeater {
-  border: 1px dotted #f00;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
 }

@@ -48,9 +48,9 @@ export default function Edit({attributes, setAttributes}) {
         setAttributes({ items: newItems });
     };
 
-	const removeItem = () => {
+	const removeItem = (index) => {
         const currentItems = [...attributes.items];
-        currentItems.pop();
+        currentItems.splice(index, 1);
         setAttributes({ items: currentItems });
     };
 
@@ -184,7 +184,7 @@ export default function Edit({attributes, setAttributes}) {
 						{attributes.items?.map((item, index) => (
 							<div className='card'>
 								<div style={{ textAlign: "right", paddingTop: "20px", marginBottom: "20px" }}>
-									<Button variant="primary" onClick={removeItem}>Remove</Button>
+									<Button variant="primary" onClick={() => removeItem(index)}>Remove</Button>
 								</div>
 								<div className="card-img">
 									<MediaUpload

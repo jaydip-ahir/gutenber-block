@@ -71,9 +71,9 @@ function Edit({
       items: newItems
     });
   };
-  const removeItem = () => {
+  const removeItem = index => {
     const currentItems = [...attributes.items];
-    currentItems.pop();
+    currentItems.splice(index, 1);
     setAttributes({
       items: currentItems
     });
@@ -215,7 +215,7 @@ function Edit({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
     variant: "primary",
-    onClick: removeItem
+    onClick: () => removeItem(index)
   }, "Remove")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "card-img"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {

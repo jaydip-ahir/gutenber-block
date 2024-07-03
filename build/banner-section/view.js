@@ -26,7 +26,6 @@ var __webpack_exports__ = {};
  */
 
 /* eslint-disable no-console */
-console.log("Hello World! (from banner-section-banner-section block)");
 /* eslint-enable no-console */
 /******/ })()
 ;

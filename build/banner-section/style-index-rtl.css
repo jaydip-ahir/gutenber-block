@@ -126,7 +126,7 @@
   padding-top: 2.5rem;
 }
 
-.container {
+.ban_sec .container {
   margin-right: auto;
   margin-left: auto;
   padding-right: 1rem;
@@ -227,12 +227,12 @@ img, video {
 }
 
 @media (min-width: 1532px) {
-  .container {
+  .ban_sec .container {
     max-width: 1532px;
   }
 }
 @media (min-width: 1272px) {
-  .container {
+  .ban_sec .container {
     max-width: 1272px;
   }
 }

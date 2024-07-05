@@ -1,17 +1,17 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "slider/slider",
+	"name": "blog-post/blog-post",
 	"version": "0.1.0",
-	"title": "Slider",
+	"title": "Blog Post",
 	"category": "design",
-	"icon": "images-alt2",
-	"description": "For a slider",
+	"icon": "screenoptions",
+	"description": "Display Blog Posts",
 	"example": {},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "slider",
+	"textdomain": "blog-post",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

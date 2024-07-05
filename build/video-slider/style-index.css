@@ -9,11 +9,9 @@
  */
 .wp-block-video-slider-video-slider {
   max-width: none !important;
-  width: 100% !important;
-  background: #abeaff;
-  padding: 30px;
+  background: linear-gradient(135deg, rgb(3, 82, 182) 0%, rgb(11, 120, 156) 6%, rgb(25, 197, 233) 45%, rgb(6, 94, 130) 81%);
+  padding: 50px;
   margin: 0;
-  border-radius: 10px;
 }
 
 @keyframes title {
@@ -48,7 +46,6 @@
 .video-wrapper .iframe-wrap {
   position: relative;
   padding-bottom: 56.25%;
-  /* 16:9 */
   margin-top: 10px;
 }
 .video-wrapper .btn-wrap {
@@ -149,6 +146,7 @@
 }
 
 .videos.selected-video,
+.videos.selected-video .video-wrapper,
 .videos .video-wrapper:hover {
   filter: none;
 }

@@ -3,7 +3,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-import { Swiper } from 'react';
 import { registerBlockType } from '@wordpress/blocks';
 
 /**
@@ -29,18 +28,10 @@ import metadata from './block.json';
  */
 registerBlockType( metadata.name, {
 	attributes: {
-		slides:{
+		postsData: {
 			type: 'object',
-			default: [
-				{
-					sliderImage: 'https://placehold.co/1920x1280',
-					sliderHeading: '',
-					sliderSubHeading: '',
-					sliderHeadingURL: '',
-					sliderVideo: ''
-				}
-			]
-		}
+			default: [],
+		}  
 	},
 	/**
 	 * @see ./edit.js

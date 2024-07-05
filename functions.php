@@ -216,6 +216,7 @@ function wpdocs_create_blocks_init() {
 	register_block_type( __DIR__ . '/build/card-repeater' );
 	register_block_type( __DIR__ . '/build/banner-section' );
 	register_block_type( __DIR__ . '/build/video-slider' );
+	register_block_type( __DIR__ . '/build/blog-post' );
 }
 add_action( 'init', 'wpdocs_create_blocks_init' );
 
@@ -229,7 +230,9 @@ function enqueue_video_slider_js() {
 
 add_action( 'wp_enqueue_scripts', 'enqueue_video_slider_js' );
 
-add_action( 'acf/init', 'my_acf_init' );
+/** //phpcs:ignore
+ * Register ACF block
+ */
 function my_acf_init() {
 
 	if ( function_exists( 'acf_register_block' ) ) {
@@ -247,13 +250,17 @@ function my_acf_init() {
 		);
 	}
 }
+
+add_action( 'acf/init', 'my_acf_init' );
+
+/** //phpcs:ignore
+ * Register ACF block
+ */
 function my_acf_block_render_callback( $block ) {
-    
-    // convert name ("acf/testimonial") into path friendly slug ("testimonial")
-    $slug = str_replace('acf/', '', $block['name']);
-    
-    // include a template part from within the "template-parts/block" folder
-    if( file_exists( get_theme_file_path("/template-parts/block/content-{$slug}.php") ) ) {
-        include( get_theme_file_path("/template-parts/block/content-{$slug}.php") );
-    }
+
+	$slug = str_replace( 'acf/', '', $block['name'] );
+
+	if ( file_exists( get_theme_file_path( "/template-parts/block/content-{$slug}.php" ) ) ) {
+		include get_theme_file_path( "/template-parts/block/content-{$slug}.php" );
+	}
 }
